@@ -1,0 +1,77 @@
+<div [ngClass]="{ center: count >= 0, header: count >= 0 }">
+  <h1 class="mx-3">Começando meus estudos</h1>
+</div>
+
+<div class="mx-5 my-5">
+  <h2 appCorTexto>Usando ngClass e NgStyle</h2>
+  <p [ngClass]="{ center: count >= 0 }">Contando até 10:</p>
+  <p
+    [ngStyle]="{ color: count < 5 ? 'red' : 'blue' }"
+    [ngClass]="{ custom: count > 5, center: count >= 0 }"
+  >
+    Contador: {{ count }}
+  </p>
+</div>
+
+<div>
+  <h2 appCorTexto class="my-3 mx-5">Usando ngIf</h2>
+  <p class="text-center" *ngIf="count > 5; else menor">Contador maior que 5!</p>
+  <ng-template #menor>
+    <p class="text-center">Contador menor ou igual a 5!</p></ng-template
+  >
+</div>
+
+<div>
+  <h2 appCorTexto class="m-5">Usando ngSwitch</h2>
+  <ul [ngSwitch]="count" class="list-group mx-auto col-3 my-3">
+    <li *ngSwitchCase="2" class="list-group-item">Igual a 2</li>
+    <li *ngSwitchCase="4" class="list-group-item">Igual a 4</li>
+    <li *ngSwitchCase="6" class="list-group-item">Igual a 6</li>
+    <li *ngSwitchCase="8" class="list-group-item">Igual a 8</li>
+    <li *ngSwitchCase="10" class="list-group-item">Igual a 10</li>
+    <li *ngSwitchDefault class="list-group-item">Número ímpar</li>
+  </ul>
+</div>
+
+<div>
+  <h2 appCorTexto class="mx-5">Usando ngFor</h2>
+  <ul class="list-group mx-auto col-6">
+    <li class="list-group-item my-2" *ngFor="let p of pessoas">
+      Esta pessoa se chama {{ p.nome }} {{ p.sobrenome }} e tem
+      {{ p.idade }} anos de idade.
+    </li>
+  </ul>
+</div>
+
+<div class="d-flex justify-content-center mx-5 my-3">
+  <h2 appCorTexto>
+    Usando Comando do template para TS (Usando One Way Data Binding)
+  </h2>
+  <button
+    type="button"
+    class="btn btn-success mx-auto col-4"
+    (click)="clicou('Mayra')"
+  >
+    Clique aqui
+  </button>
+</div>
+
+<div class="justify-content-center mx-5 my-4">
+  <h2 appCorTexto>Usando Two Way Data Binding</h2>
+  <label class="my-3">Escrevendo para a saída</label>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Digite alguma coisa aqui"
+    [(ngModel)]="text"
+  />
+  <p class="my-2">Saída: {{ text }}</p>
+</div>
+
+<div class="justify-content-center mx-5 my-4">
+  <h2 appCorTexto>Criando Diretiva</h2>
+  <p>
+    Codigo para criar diretiva:<span appCorTexto> ng g d nomeDiretiva</span>
+  </p>
+  <p>Seguir o código no VS</p>
+</div>
